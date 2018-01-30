@@ -1,0 +1,17 @@
+{
+	"name": "npmTestAppted",
+	"description": "npmTestAppted",
+	"version": "0.1.0",
+	"devDependencies": {
+		"grunt": "1.0.1",
+		"grunt-cli": "1.2.0",
+		"grunt-contrib-clean": "1.0.0",
+		"jit-grunt": "0.10.0",
+		"yarnrc": "1.1.4"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/appted/npmTestAppted.git"
+	},
+	"license" : "Apache-2.0"
+}

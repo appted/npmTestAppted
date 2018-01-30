@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>bla.appted</groupId>
+	<artifactId>npmTestAppted</artifactId>
+	<packaging>pom</packaging>
+	<version>0.1.0</version>
+
+	<properties>
+		<nodejsVersion>v8.9.1</nodejsVersion>
+		<yarnVersion>v1.3.2</yarnVersion>
+		<skipInstallNodeNpm>false</skipInstallNodeNpm>
+		<skipNpmInstall>false</skipNpmInstall>
+	</properties>
+
+	<dependencies>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>install node and yarn</id>
+						<goals>
+							<goal>install-node-and-yarn</goal>
+						</goals>
+						<phase>initialize</phase>
+						<configuration>
+							<skip>${skipInstallNodeNpm}</skip>
+							<nodeVersion>${nodejsVersion}</nodeVersion>
+							<yarnpkgVersion>${yarnVersion}</yarnpkgVersion>
+						</configuration>
+					</execution>
+					<execution>
+						<id>yarn install</id>
+						<goals>
+							<goal>yarn</goal>
+						</goals>
+						<phase>initialize</phase>
+						<configuration>
+							<skip>${skipNpmInstall}</skip>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>executeGruntTask</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>grunt</goal>
+						</goals>
+						<configuration>
+							<arguments>${gruntTask}</arguments>
+							<environmentVariables>
+								<PATH>${project.basedir}/node${path.separator}${project.basedir}/node_modules/.bin${path.separator}${env.PATH}</PATH>
+							</environmentVariables>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>cleanNodeAndModulesAndClientSources</id>
+						<!-- Execution is not bound to a lifecycle phase an must be triggered manually -->
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<skip>${maven.clean.skip}</skip>
+					<filesets>
+						<fileset>
+							<directory>node</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>node_modules</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

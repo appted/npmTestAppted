@@ -1,0 +1,15 @@
+dist
+grunt-conf
+.editorconfig
+.eslintignore
+.eslintrc
+.git
+.gitattributes
+.gitignore
+.yarnrc
+yarn.lock
+Gruntfile.js
+pom.xml
+node
+node_modules
+npm-debug.log

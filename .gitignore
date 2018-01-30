@@ -1,0 +1,9 @@
+node_modules/
+node/
+target/
+*.war
+.idea/
+/.project
+/.settings/
+documentation/
+yarn.lock
