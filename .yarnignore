@@ -13,3 +13,5 @@ pom.xml
 node
 node_modules
 npm-debug.log
+.yarnignore
+LICENSE
