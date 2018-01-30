@@ -1,6 +1,6 @@
 {
-	"name": "npmTestAppted",
-	"description": "npmTestAppted",
+	"name": "npmtestappted",
+	"description": "npmtestappted",
 	"version": "0.1.0",
 	"devDependencies": {
 		"grunt": "1.0.1",

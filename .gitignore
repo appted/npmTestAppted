@@ -7,3 +7,4 @@ target/
 /.settings/
 documentation/
 yarn.lock
+yarn-error.log
